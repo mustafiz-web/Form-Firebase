@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hotel Booking</title>
+  <link rel="shortcut icon" href="hotel.png" type="image/x-icon" />
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .image{
+      width: 100%;
+      height: 400px;
+    }
+    img{
+      width: 100%;
+      height: 400px;
+    }
+  </style>
+</head>
+<body>
+  <section>
+  <div class="image"><img src="hotel.jpg" alt="hotel-banner"></div>
+  </section>
+  <h1 id="heading">
+    Hotel Booking Form
+  </h1>
+  <h5>Book your stay at our luxurious hotel</h5>
+  <section class="container">
+    <form id="bookingForm">
+      <label for="name"><span class="allstar">*</span> Name:</label>
+      <input type="text" id="firstName" required placeholder="first name" />
+      <input type="text" id="lastName" required placeholder="Last name" />
+
+      <label for="email"><span class="allstar">*</span> Email:</label>
+      <input type="email" id="email" required placeholder="Your email" />
+
+      <label for="phone"><span class="allstar">*</span> Phone:</label>
+      <input type="text" id="phone" required placeholder="Your phone number" />
+
+      <label for="roomType"><span class="allstar">*</span> Room Type:</label>
+      <select name="room type" id="roomType" required>
+        <option value="">Please Select</option>
+        <option value="Standard Room">Standard Room (1-2 people)</option>
+        <option value="Family Room">Family Room (3-4 people)</option>
+        <option value="Private Room">Private Room (4-5 people)</option>
+        <option value="Deluxe Room">Deluxe Room (1 person)</option>
+      </select>
+
+      <label for="guests">Number of Guests:</label>
+      <input type="number" id="guests" min="1" max="5" placeholder="1-5" />
+
+      <label for="arrival"><span class="allstar">*</span> Arrival Date:</label>
+      <input type="date" id="arrival" required />
+
+      <label for="departure"><span class="allstar">*</span> Departure Date:</label>
+      <input type="date" id="departure" required />
+
+      <fieldset>
+        <legend><span class="allstar">*</span> Payment Information</legend>
+        <label><input type="radio" name="payment" value="Bkash" required /> Bkash</label>
+        <br>
+        <label><input type="radio" name="payment" value="Nagad" /> Nagad</label>
+        <br>
+        <label><input type="radio" name="payment" value="Rocket" /> Rocket</label>
+        <br>
+        <label><input type="radio" name="payment" value="Upai" /> Upai</label>
+        <br>
+        <label><input type="radio" name="payment" value="Credit Card" /> Credit Card</label>
+      </fieldset>
+
+      <fieldset>
+        <legend>Free Pickup Service</legend>
+        <label><input type="radio" name="pickup" value="Yes" /> Yes Please! - Pick me up on arrival</label>
+        <br>
+        <label><input type="radio" name="pickup" value="No" /> No Thanks! - I will arrange my own transport</label>
+      </fieldset>
+
+      <fieldset>
+        <legend>Special Requests</legend>
+        <textarea id="requests" cols="100" rows="20" placeholder="Any special requests?"></textarea>
+      </fieldset>
+
+      <button class="container" type="reset">Reset</button>
+      <button class="container" type="submit">Submit</button>
+    </form>
+  </section>
+
+  <footer>
+    <small>&copy; 2025 Hotel Booking. All rights reserved.</small>
+  </footer>
+
+
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-app.js";
+    import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore.js";
+    const firebaseConfig = {
+      apiKey: "AIzaSyBo5F-gTb6LNmy5rcV69qJRkrWh78dSJow",
+      authDomain: "form-d5f02.firebaseapp.com",
+      projectId: "form-d5f02",
+      storageBucket: "form-d5f02.firebasestorage.app",
+      messagingSenderId: "228774869767",
+      appId: "1:228774869767:web:bb9481f7779430f89ee3a2",
+      measurementId: "G-JKCX43VXNG"
+    };
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+    document.getElementById("bookingForm").addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const bookingData = {
+        firstName: document.getElementById("firstName").value,
+        lastName: document.getElementById("lastName").value,
+        email: document.getElementById("email").value,
+        phone: document.getElementById("phone").value,
+        roomType: document.getElementById("roomType").value,
+        guests: document.getElementById("guests").value,
+        arrival: document.getElementById("arrival").value,
+        departure: document.getElementById("departure").value,
+        payment: document.querySelector('input[name="payment"]:checked')?.value || "",
+        pickup: document.querySelector('input[name="pickup"]:checked')?.value || "",
+        requests: document.getElementById("requests").value,
+        timestamp: new Date().toISOString()
+      };
+
+      try {
+        await addDoc(collection(db, "hotelBookings"), bookingData);
+        alert("✅ Booking Submitted Successfully!");
+        e.target.reset();
+      } catch (error) {
+        console.error("Error saving booking: ", error);
+        alert("❌ Failed to save booking. Check console for details.");
+      }
+    });
+  </script>
+</body>
+</html>

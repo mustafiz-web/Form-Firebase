@@ -1,0 +1,126 @@
+#heading {
+    color: #4998bd;
+    font-size: 3em;
+    text-align: center;
+    font-family: 'Arial', sans-serif;
+    margin-top: 20px;
+    text-shadow: #2c3e50 1px 1px 2px;
+}
+footer {
+    text-align: center;
+    font-size: 1em;
+    color: #4b4a4a;
+    margin: 20px 0;
+}
+h5 {
+    text-align: center;
+    font-size: 1.4em;
+    color: #313131;
+    margin-top: 10px;
+    font-family: 'Arial', sans-serif;
+}
+.left{
+  margin-left: 20px;
+  font-size: 0.8em;
+}
+label{
+  font-size: 2em;
+  margin-left: 20px;
+}
+.allstar{
+  color: red;
+}
+fieldset{
+  border: 2px solid #4998bd;
+  border-radius: 10px;
+  margin: 20px;
+  padding: 10px;
+  font-size: 1em;
+}
+legend{
+  font-size: 2em;
+  color: #313131;
+  font-weight: bold;
+}
+.rm{
+  font-size: 1.2em;
+  color: #313131;
+  font-weight: bold;
+  margin: 10px;
+  padding: 10px;
+}
+*{
+  margin: 0;
+  padding: 0;
+   justify-content: center;
+}
+.container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+ box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.5s ease, transform 0.3s ease;
+}
+.container:hover {
+    box-shadow: 0 0 30px rgba(0, 123, 255, 0.4);
+    transform: scale(1.02);
+}
+.container {
+    width: 90%;
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 30px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.5s ease, transform 0.3s ease;
+  }
+
+  /* ✅ Hover animation trigger */
+  .container:hover {
+    box-shadow: 0 0 30px rgba(0, 123, 255, 0.4);
+    transform: scale(1.02);
+  }
+
+  /* Optional: Smooth input focus glow */
+  input[type="text"],
+  input[type="email"],
+  input[type="number"],
+  input[type="date"],
+  select,
+  textarea {
+    width: 95%;
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 16px;
+    transition: all 0.3s ease;
+  }
+
+  /* ✅ Input focus animation */
+  input:hover,
+  select:hover,
+  textarea:hover {
+    border-color: #007bff;
+    box-shadow: 0 0 8px rgba(0, 123, 255, 0.5);
+  }
+
+  input:focus,
+  select:focus,
+  textarea:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 10px rgba(0, 123, 255, 0.7);
+  }
+  button {
+    background-color: #007bff;
+    color: rgb(48, 124, 246);
+    padding: 12px 20px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    font-size: 2em;
+  }
