@@ -3,93 +3,216 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Hotel Booking</title>
+  <title>Azure Cove Hotel — Reserve Your Stay</title>
   <link rel="shortcut icon" href="hotel.png" type="image/x-icon" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
-  <style>
-    .image{
-      width: 100%;
-      height: 400px;
-    }
-    img{
-      width: 100%;
-      height: 400px;
-    }
-  </style>
 </head>
 <body>
-  <section>
-  <div class="image"><img src="hotel.jpg" alt="hotel-banner"></div>
-  </section>
-  <h1 id="heading">
-    Hotel Booking Form
-  </h1>
-  <h5>Book your stay at our luxurious hotel</h5>
-  <section class="container">
-    <form id="bookingForm">
-      <label for="name"><span class="allstar">*</span> Name:</label>
-      <input type="text" id="firstName" required placeholder="first name" />
-      <input type="text" id="lastName" required placeholder="Last name" />
 
-      <label for="email"><span class="allstar">*</span> Email:</label>
-      <input type="email" id="email" required placeholder="Your email" />
+  <!-- ============ HERO ============ -->
+  <header class="hero">
+    <div class="hero__media">
+      <img src="hotel.jpg" alt="A shaded cabana deck looking out over the sea at Azure Cove" />
+      <div class="hero__scrim"></div>
+    </div>
 
-      <label for="phone"><span class="allstar">*</span> Phone:</label>
-      <input type="text" id="phone" required placeholder="Your phone number" />
+    <div class="hero__content">
+      <div class="hero__mark">
+        <img src="hotel.png" alt="" aria-hidden="true" />
+        <span>Azure Cove Hotel</span>
+      </div>
+      <h1 class="hero__title">A quiet stretch of<br>coastline, held for you.</h1>
+      <p class="hero__subtitle">Reserve a room in a few minutes — our team confirms every booking by hand.</p>
+      <a href="#booking" class="hero__cta">Begin your reservation</a>
+    </div>
 
-      <label for="roomType"><span class="allstar">*</span> Room Type:</label>
-      <select name="room type" id="roomType" required>
-        <option value="">Please Select</option>
-        <option value="Standard Room">Standard Room (1-2 people)</option>
-        <option value="Family Room">Family Room (3-4 people)</option>
-        <option value="Private Room">Private Room (4-5 people)</option>
-        <option value="Deluxe Room">Deluxe Room (1 person)</option>
-      </select>
+    <svg class="hero__wave" viewBox="0 0 1440 90" preserveAspectRatio="none" aria-hidden="true">
+      <path d="M0,32 C240,80 480,0 720,28 C960,56 1200,84 1440,40 L1440,90 L0,90 Z"></path>
+    </svg>
+  </header>
 
-      <label for="guests">Number of Guests:</label>
-      <input type="number" id="guests" min="1" max="5" placeholder="1-5" />
+  <!-- ============ FORM ============ -->
+  <main>
+    <section class="booking" id="booking">
+      <div class="booking__intro">
+        <p class="booking__eyebrow">Reservation</p>
+        <h2>Tell us about your stay</h2>
+        <p class="booking__lede">Fields marked <span class="req">*</span> are required. We'll email a confirmation as soon as your booking is received.</p>
+      </div>
 
-      <label for="arrival"><span class="allstar">*</span> Arrival Date:</label>
-      <input type="date" id="arrival" required />
+      <form id="bookingForm" class="card" novalidate>
 
-      <label for="departure"><span class="allstar">*</span> Departure Date:</label>
-      <input type="date" id="departure" required />
+        <!-- Step 1 -->
+        <div class="step">
+          <div class="step__head">
+            <span class="step__num">1</span>
+            <div>
+              <h3>Guest details</h3>
+              <p>Who should we prepare the room for?</p>
+            </div>
+          </div>
 
-      <fieldset>
-        <legend><span class="allstar">*</span> Payment Information</legend>
-        <label><input type="radio" name="payment" value="Bkash" required /> Bkash</label>
-        <br>
-        <label><input type="radio" name="payment" value="Nagad" /> Nagad</label>
-        <br>
-        <label><input type="radio" name="payment" value="Rocket" /> Rocket</label>
-        <br>
-        <label><input type="radio" name="payment" value="Upai" /> Upai</label>
-        <br>
-        <label><input type="radio" name="payment" value="Credit Card" /> Credit Card</label>
-      </fieldset>
+          <div class="field-row">
+            <div class="field">
+              <label for="firstName">First name <span class="req">*</span></label>
+              <input type="text" id="firstName" required placeholder="Amina" autocomplete="given-name" />
+            </div>
+            <div class="field">
+              <label for="lastName">Last name <span class="req">*</span></label>
+              <input type="text" id="lastName" required placeholder="Rahman" autocomplete="family-name" />
+            </div>
+          </div>
 
-      <fieldset>
-        <legend>Free Pickup Service</legend>
-        <label><input type="radio" name="pickup" value="Yes" /> Yes Please! - Pick me up on arrival</label>
-        <br>
-        <label><input type="radio" name="pickup" value="No" /> No Thanks! - I will arrange my own transport</label>
-      </fieldset>
+          <div class="field-row">
+            <div class="field">
+              <label for="email">Email <span class="req">*</span></label>
+              <input type="email" id="email" required placeholder="you@example.com" autocomplete="email" />
+            </div>
+            <div class="field">
+              <label for="phone">Phone <span class="req">*</span></label>
+              <input type="text" id="phone" required placeholder="+880 1XXX-XXXXXX" autocomplete="tel" />
+            </div>
+          </div>
+        </div>
 
-      <fieldset>
-        <legend>Special Requests</legend>
-        <textarea id="requests" cols="100" rows="20" placeholder="Any special requests?"></textarea>
-      </fieldset>
+        <div class="divider"></div>
 
-      <button class="container" type="reset">Reset</button>
-      <button class="container" type="submit">Submit</button>
-    </form>
-  </section>
+        <!-- Step 2 -->
+        <div class="step">
+          <div class="step__head">
+            <span class="step__num">2</span>
+            <div>
+              <h3>Stay details</h3>
+              <p>Choose a room and your dates.</p>
+            </div>
+          </div>
+
+          <div class="field-row">
+            <div class="field">
+              <label for="roomType">Room type <span class="req">*</span></label>
+              <div class="select-wrap">
+                <select name="room type" id="roomType" required>
+                  <option value="">Please select</option>
+                  <option value="Standard Room">Standard Room (1–2 people)</option>
+                  <option value="Family Room">Family Room (3–4 people)</option>
+                  <option value="Private Room">Private Room (4–5 people)</option>
+                  <option value="Deluxe Room">Deluxe Room (1 person)</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="field">
+              <label for="guests">Number of guests</label>
+              <div class="stepper">
+                <button type="button" class="stepper__btn" id="guestMinus" aria-label="Decrease guests">−</button>
+                <input type="number" id="guests" min="1" max="5" value="1" readonly />
+                <button type="button" class="stepper__btn" id="guestPlus" aria-label="Increase guests">+</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="field-row">
+            <div class="field">
+              <label for="arrival">Arrival date <span class="req">*</span></label>
+              <input type="date" id="arrival" required />
+            </div>
+            <div class="field">
+              <label for="departure">Departure date <span class="req">*</span></label>
+              <input type="date" id="departure" required />
+            </div>
+          </div>
+        </div>
+
+        <div class="divider"></div>
+
+        <!-- Step 3 -->
+        <div class="step">
+          <div class="step__head">
+            <span class="step__num">3</span>
+            <div>
+              <h3>Payment method</h3>
+              <p>Select how you'd like to pay.</p>
+            </div>
+          </div>
+
+          <div class="option-grid" role="radiogroup" aria-label="Payment method">
+            <label class="option-card">
+              <input type="radio" name="payment" value="Bkash" required />
+              <span class="option-card__label">Bkash</span>
+            </label>
+            <label class="option-card">
+              <input type="radio" name="payment" value="Nagad" />
+              <span class="option-card__label">Nagad</span>
+            </label>
+            <label class="option-card">
+              <input type="radio" name="payment" value="Rocket" />
+              <span class="option-card__label">Rocket</span>
+            </label>
+            <label class="option-card">
+              <input type="radio" name="payment" value="Upai" />
+              <span class="option-card__label">Upai</span>
+            </label>
+            <label class="option-card">
+              <input type="radio" name="payment" value="Credit Card" />
+              <span class="option-card__label">Credit Card</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="divider"></div>
+
+        <!-- Step 4 -->
+        <div class="step">
+          <div class="step__head">
+            <span class="step__num">4</span>
+            <div>
+              <h3>Extras</h3>
+              <p>A couple of optional touches.</p>
+            </div>
+          </div>
+
+          <div class="field">
+            <label class="label-standalone">Free pickup service</label>
+            <div class="option-grid option-grid--two" role="radiogroup" aria-label="Free pickup service">
+              <label class="option-card">
+                <input type="radio" name="pickup" value="Yes" />
+                <span class="option-card__label">Yes please — pick me up on arrival</span>
+              </label>
+              <label class="option-card">
+                <input type="radio" name="pickup" value="No" />
+                <span class="option-card__label">No thanks — I'll arrange my own transport</span>
+              </label>
+            </div>
+          </div>
+
+          <div class="field">
+            <div class="field__label-row">
+              <label for="requests">Special requests</label>
+              <span class="char-count" id="charCount">0 / 300</span>
+            </div>
+            <textarea id="requests" rows="4" maxlength="300" placeholder="Late check-in, a quiet floor, dietary notes — anything we should know."></textarea>
+          </div>
+        </div>
+
+        <div class="form-actions">
+          <button class="btn btn--ghost" type="reset">Reset</button>
+          <button class="btn btn--primary" type="submit">
+            <span class="btn__label">Submit booking</span>
+            <span class="btn__spinner" aria-hidden="true"></span>
+          </button>
+        </div>
+      </form>
+    </section>
+  </main>
 
   <footer>
-    <small>&copy; 2025 Hotel Booking. All rights reserved.</small>
+    <small>&copy; 2025 Azure Cove Hotel. All rights reserved.</small>
   </footer>
 
-
+  <!-- ============ FIREBASE (unchanged) ============ -->
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-app.js";
     import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore.js";
@@ -131,5 +254,8 @@
       }
     });
   </script>
+
+  <!-- ============ UI ENHANCEMENTS (separate from firebase logic) ============ -->
+  <script src="app.js"></script>
 </body>
 </html>
